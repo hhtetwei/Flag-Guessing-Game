@@ -1,13 +1,14 @@
 'use client';
 
+import { Suspense } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
-export default function Scores() {
+function ScoresContent() {
   const searchParams = useSearchParams();
-  const score = parseInt(searchParams.get('score') || '0', 10); // Convert score to an integer
+  const score = parseInt(searchParams.get('score') || '0', 10);
 
   let message = '';
   if (score === 0) {
@@ -19,6 +20,7 @@ export default function Scores() {
   } else {
     message = `Well done! Your score is ${score}.`;
   }
+
   return (
     <div className="text-center text-white">
       <h1 className="text-3xl font-bold mt-10">Game Over!</h1>
@@ -35,5 +37,13 @@ export default function Scores() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function Scores() {
+  return (
+    <Suspense fallback={<div className="text-white text-center">Loading score...</div>}>
+      <ScoresContent />
+    </Suspense>
   );
 }
