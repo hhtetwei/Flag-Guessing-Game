@@ -5,7 +5,9 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div>
-      <p className="text-2xl text-white font-bold mt-3">Welcome to the flag guessing game 🎌 </p>
+      <p className="text-2xl text-white font-bold mt-3 lg:flex lg:justify-center">
+        Welcome to the flag guessing game 🎌{' '}
+      </p>
 
       <p className="text-xl text-white mt-2 text-justify ">
         Welcome to the ultimate flag challenge! 🎉🌍 You&apos;ll be racing against the clock with 10
